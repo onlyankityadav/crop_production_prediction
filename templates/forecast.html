@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous" />
+    <title>Crop Production Forecasting</title>
+    <style>
+        /* ============================================login-form css starts here ============================================  */
+        * {
+            margin: 0%;
+            padding: 0%;
+            scroll-behavior: smooth;
+            --first: #ffd841;
+            --second: #e9edf1;
+            --third: #3d73dd;
+            --fourth: #0e2045;
+            --white: #ffffff;
+            --black: #000000;
+
+        }
+
+        .login-form {
+            padding-top: 30px;
+            padding-bottom: 40px;
+        }
+
+        #LoginForm {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        #LoginForm h5 {
+            color: var(--fourth);
+        }
+
+        #LoginForm p {
+            margin: 0%;
+            color: var(--fourth);
+        }
+
+        #LoginForm a {
+            color: var(--third);
+        }
+
+        .login-btn {
+            background-color: var(--first) !important;
+            color: var(--fourth) !important;
+        }
+
+        .login-btn:hover {
+            background-color: var(--fourth) !important;
+            color: var(--first) !important;
+            transform: scale(1.05);
+            transition: 0.2s;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        #LoginForm ::placeholder {
+            color: var(--fourth);
+        }
+
+        #LoginForm input {
+            color: var(--fourth);
+            box-shadow: var(--third);
+        }
+
+        #LoginForm input:focus {
+            transform: scale(1.01);
+            transition: 0.5s;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
+
+<body class="bg-warning">
+    <!-- ==========================================Log in form starts here ========================================== -->
+    <div class="container-fluid login-form">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-12 col-md-6 mx-auto bg-white" id="LoginForm">
+                <h5 class="text-center text-info mb-3">Crop Production Forecasting Model</h5>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">District</th>
+                            <th scope="col">Crop</th>
+                            <th scope="col">Season</th>
+                            <th scope="col">Area</th>
+                            <th scope="col">Yield</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ district }}</th>
+                            <td>{{ crop }}</td>
+                            <td>{{ season }}</td>
+                            <td>{{ area }}</td>
+                            <td>{{ yield1 }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="text-center">
+                    <p class="font-20 text-info h3">The total Production of the given input is with : </p>
+                    <p class="text-danger text-center m-3 h5">Linear Regression :
+                        {% if result %}
+                        {{ result }}
+                        {% endif %}
+                    </p>
+
+                </div>
+                <form class="bg-white mt-3 d-flex justify-content-center" method="post" action="/test_again">
+                    <button type="submit" value="test_again" class="btn login-btn m-2">
+                        Another Prediction
+                    </button>
+                    <input class="btn m-2 login-btn" value='Print Results' type='button' onclick='handlePrint()' />
+                    <script type="text/javascript">
+                        const handlePrint = () => {
+                            var actContents = document.body.innerHTML;
+                            document.body.innerHTML = actContents;
+                            window.print();
+                        }
+                    </script>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <!-- bootstrap js  -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    </footer>
+</body>
+
+</html>

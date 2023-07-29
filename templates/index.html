@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous" />
+    <title>Crop Production Forecasting</title>
+    <style>
+        /* ============================================login-form css starts here ============================================  */
+        * {
+            margin: 0%;
+            padding: 0%;
+            scroll-behavior: smooth;
+            --first: #ffd841;
+            --second: #e9edf1;
+            --third: #3d73dd;
+            --fourth: #0e2045;
+            --white: #ffffff;
+            --black: #000000;
+        }
+
+        .login-form {
+            padding-top: 30px;
+            padding-bottom: 40px;
+        }
+
+        #LoginForm {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        #LoginForm h5 {
+            color: var(--fourth);
+        }
+
+        #LoginForm p {
+            margin: 0%;
+            color: var(--fourth);
+        }
+
+        #LoginForm a {
+            color: var(--third);
+        }
+
+        .login-btn {
+            background-color: var(--first) !important;
+            color: var(--fourth) !important;
+        }
+
+        .login-btn:hover {
+            background-color: var(--fourth) !important;
+            color: var(--first) !important;
+            transform: scale(1.05);
+            transition: 0.2s;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        #LoginForm ::placeholder {
+            color: var(--fourth);
+        }
+
+        #LoginForm input {
+            color: var(--fourth);
+            box-shadow: var(--third);
+        }
+
+        #LoginForm input:focus {
+            transform: scale(1.01);
+            transition: 0.5s;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 10px;
+            background: var(--third);
+            outline: none;
+            opacity: 0.5;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+        }
+
+        .slider:hover {
+            opacity: 1;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: var(--first);
+            cursor: pointer;
+            opacity: 1;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: var(--first)s;
+            cursor: pointer;
+        }
+    </style>
+
+    </style>
+</head>
+
+<body class="bg-warning">
+    <!-- ==========================================Log in form starts here ========================================== -->
+    <div class="container-fluid login-form">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-12 col-md-6 mx-auto">
+
+                <form id="LoginForm" class="bg-white" method="post" action="/predict">
+                    <h5 class="text-center text-info mb-3">Crop Production Forecasting Model</h5>
+                    <div class="form-group">
+                        <label class="text-info font-weight-bold" for="District">Select District</label>
+                        <select name="District" id="District" placeholder="District Name* " title="Name"
+                            class="form-control input-text " type="text" required>
+                            <option value="Jodhpur">Jodhpur</option>
+                            <option value="Jaipur">Jaipur</option>
+                            <option value="Kota">Kota</option>
+                            <option value="Hanumangarh">Hanumangarh</option>
+                            <option value="Sri Ganganagar">Sri Ganganagar</option>
+                            <option value="Udaipur">Udaipur</option>
+                            <option value="Bhilwara">Bhilwara</option>
+                            <option value="Alwar">Alwar</option>
+                            <option value="Nagaur">Nagaur</option>
+                            <option value="Ajmer">Ajmer</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="text-info font-weight-bold" for="Crop">Select Crop</label>
+                        <select name="Crop" id="Crop" placeholder="Crop" title="Crop" value=""
+                            class="form-control input-text required-entry " type="text" required>
+                            <option value="Gram">Gram</option>
+                            <option value="Wheat">Wheat</option>
+                            <option value="Coriander">Coriander</option>
+                            <option value="Citrus">Citrus</option>
+                            <option value="Cotton">Cotton</option>
+                            <option value="Guava">Guava</option>
+                            <option value="Garlic">Garlic</option>
+                            <option value="Mustard">Mustard</option>
+                            <option value="Fenugreek">Fenugreek</option>
+                            <option value="Maize">Maize</option>
+                            <option value="Fennel">Fennel</option>
+                            <option value="Bajra">Bajra</option>
+                            <option value="Oilseeds">Oilseeds</option>
+                            <option value="Opium">Opium</option>
+                            <option value="Pomegranate">Pomegranate</option>
+                            <option value="Cumin">Cumin</option>
+                            <option value="Chilli">Chilli</option>
+                            <option value="Tomato">Tomato</option>
+                            <option value="Sugarcane">Sugarcane</option>
+                            <option value="Barley">Barley</option>
+                            <option value="Onion">Onion</option>
+                            <option value="Pulses">Pulses</option>
+                            <option value="Mango">Mango</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="text-info font-weight-bold" for="Season">Select Season</label>
+                        <select name="Season" id="Season" placeholder="Season" title="Season" value=""
+                            class="form-control input-text required-entry" type="text" required>
+                            <option value="Rabi">Rabi</option>
+                            <option value="Kharif">Kharif</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="text-info font-weight-bold" for="Area">Enter area (in hectares)</label>
+                        <input name="Area" id="myRange" step="0.1" class="form-control slider" type="range" min="5000.0"
+                            max="20000.0" value="10000.0" />
+                        <span id="demo" class="pt-3 font-weight-bold text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="text-info font-weight-bold" for="yield">Enter Yield(quintals)</label>
+                        <input name="Yield" id="myRange1" step="0.01" value="25.00" class="form-control slider"
+                            min="20.0" max="65" type="range" />
+                        <span id="demo1" class="font-weight-bold text-danger"></span>
+                    </div>
+                    <br />
+                    <button type="submit" value="Predict" class="btn login-btn mt-2">
+                        Predict Production
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <!-- bootstrap js  -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+        <script>
+            var slider = document.getElementById("myRange");
+            var output = document.getElementById("demo");
+            output.innerHTML = slider.value;
+
+            slider.oninput = function () {
+                output.innerHTML = this.value;
+            }
+
+            var slider1 = document.getElementById("myRange1");
+            var output1 = document.getElementById("demo1");
+            output1.innerHTML = slider1.value;
+
+            slider1.oninput = function () {
+                output1.innerHTML = this.value;
+            }
+
+        </script>
+    </footer>
+</body>
+
+</html>
